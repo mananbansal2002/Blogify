@@ -5,19 +5,35 @@ import Emptylist from '../../components/Common/Emptylist';
 import { blogList } from '../../config/data';
 import { useEffect } from 'react';
 import Chip from '../../components/Common/Chip';
+import { useCallback } from 'react';
 import './style.css'
 // import './style.css'
 // import Emptylist from '../../components/Common/Emptylist';
 const Blog = () => {
   const {id}=useParams();
   const [blog,setBlog]=useState(null);
-  useEffect(() => {
-   let blog=blogList.find((blog)=>blog.id===parseInt(id));
-   if(blog)
+  // useEffect(() => {
+  //  let blog=blogList.find((blog)=>blog.id===parseInt(id));
+   
+  // }, []);
+ // eslint-disable-line react-hooks/exhaustive-deps
+ 
+  const get = useCallback(async () => {
+ 
+    const ID=id;
+    const blog = blogList.find((blog)=>blog.id===parseInt(ID));
+    setBlog(blog);
+    if(blog)
    {
     setBlog(blog);
    }
-  }, []);
+  }, [id]);
+  
+  useEffect(() => {
+    // eslint-disable-line 
+    get();
+    // eslint-disable-line react-hooks/exhaustive-deps
+  }, [get]);
   
 
  
