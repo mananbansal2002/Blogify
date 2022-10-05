@@ -2,7 +2,7 @@ import './style.css';
 
 import React from 'react'
 
-const Searchbar = ({handleSearchKey,value,clearSearch,formSubmit}) => {
+const Searchbar = ({handleSearchKey,value,clearSearchKey,formSubmit}) => {
   return (
     <div className='searchBar-wrap'>
             <form onSubmit={formSubmit}>
@@ -13,7 +13,7 @@ const Searchbar = ({handleSearchKey,value,clearSearch,formSubmit}) => {
                 value={value}>
                 </input>
                 
-                {value && <span onClick={clearSearch}>X</span>}
+                {value && <span onClick={clearSearchKey}>X</span>}
 
                 <button type='submit'>GO</button>
 
